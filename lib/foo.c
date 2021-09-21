@@ -31,6 +31,8 @@ Foo *foo_new(void) {
 }
 
 void foo_free(Foo **foo) {
+    if (!foo)
+        return;
     free((*foo)->buf);
     free((*foo));
 
