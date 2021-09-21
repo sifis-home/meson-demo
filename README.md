@@ -31,4 +31,10 @@ packages installed on your system
 
    # Export the code coverage as xml file
    ninja coverage-xml -C .build-directory-coverage
+
+   # Create a third build directory for the address sanitizer instrumented build
+   meson setup --buildtype release -Db_sanitize=address -Db_lundef=false .build-directory-asan
+
+   # Run the tests
+   meson test -C .build-directory-asan
    ```
