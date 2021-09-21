@@ -28,3 +28,4 @@ incs = include_directories('.', 'lib', 'cli')
 # Enters the specified subdirectories and executes their meson.build file.
 subdir('lib')
 subdir('cli')
+subdir('tests')
