@@ -17,6 +17,9 @@ packages installed on your system
 3. Run following
 
    ```console
-   meson --buildtype release .build-directory
+   # Create a build directory an configure its settings
+   meson setup --buildtype release .build-directory
+
+   # Build the project with the platform build system (normally ninja, could be others)
    meson compile -C .build-directory
    ```
