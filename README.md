@@ -20,7 +20,7 @@ packages installed on your system
    # Create a build directory an configure its settings
    meson setup --buildtype release .build-directory
 
-   # Build the project with the platform build system (normally ninja, could be others)
+   # Build the project with the platform build system (normally ninja, but could be others)
    meson compile -C .build-directory
 
    # Create a second build directory for the code coverage
