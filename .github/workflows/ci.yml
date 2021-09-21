@@ -5,21 +5,21 @@ on: push
 jobs:
   workflow-steps:
 
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.platform }}
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install gcovr
-      run: |
-        sudo apt-get install -y gcovr
-
     - name: Set up last Python version
       uses: actions/setup-python@v2
 
-    - name: Install meson and ninja
+    - name: Install meson, ninja and gcovr
       run: |
-        pip install meson ninja
+        pip install meson ninja gcovr
 
     - name: Create build directory and configure settings
       run: |
