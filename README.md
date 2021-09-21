@@ -17,6 +17,6 @@ packages installed on your system
 3. Run following
 
    ```console
-   meson build --buildtype release
-   ninja -C build
+   meson --buildtype release .build-directory
+   meson compile -C .build-directory
    ```
