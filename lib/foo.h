@@ -1,14 +1,13 @@
 #ifndef FOO_H
 #define FOO_H
 
-typedef struct FOO_Object {
-    int *foo_values;
-} FOO_Object;
+/// Opaque type
+typedef struct Foo Foo;
 
-// Create a new FOO_Object
-FOO_Object foo_new();
+// Create a new Foo
+Foo *foo_new();
 
-// Destroy a FOO_Object
-void foo_destroy(FOO_Object foo);
+// Free foo and reset the pointer to NULL
+void foo_free(Foo **foo);
 
 #endif

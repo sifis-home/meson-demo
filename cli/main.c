@@ -1,12 +1,12 @@
-#include <foo.h>
+#include "foo.h"
 
 int main()
 {
-    // Create a new FOO_Object
-    FOO_Object foo = foo_new();
+    // Create a new Foo
+    Foo *foo = foo_new();
 
-    // Destroy the just created FOO_Object
-    foo_destroy(foo);
+    // Free the Foo
+    foo_free(&foo);
 
     return 0;
 }

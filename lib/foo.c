@@ -1,16 +1,39 @@
 #include <stdlib.h>
+#include <stddef.h>
 
 #include "foo.h"
 
+struct Foo {
+    int *buf;
+    ptrdiff_t len;
+};
+
 #define N_ELEMENTS 10
 
-FOO_Object foo_new() {
-    FOO_Object foo;
-    int *foo_values = malloc(N_ELEMENTS * sizeof(*foo_values));
-    foo.foo_values = foo_values;
+Foo *foo_new(void) {
+    // Use calloc to ensure the fields are 0-initialized so
+    // you can pass it to foo_free even if partially allocated.
+    Foo *foo = calloc(1, sizeof(*foo));
+    if (!foo)
+        goto fail;
+
+    foo->buf = calloc(N_ELEMENTS, sizeof(*foo->buf));
+    if (!foo->buf)
+        goto fail;
+
+    foo->len = N_ELEMENTS;
+
     return foo;
+
+fail:
+    foo_free(&foo);
+
+    return NULL;
 }
 
-void foo_destroy(FOO_Object foo) {
-    free(foo.foo_values);
+void foo_free(Foo **foo) {
+    free((*foo)->buf);
+    free((*foo));
+
+    *foo = NULL;
 }
