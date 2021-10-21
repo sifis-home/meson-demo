@@ -1,0 +1,6 @@
+services:
+  tests:
+    build: .
+    command: ./run_tests.sh
+    volumes:
+      - .:/src

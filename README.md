@@ -38,3 +38,21 @@ packages installed on your system
    # Run the tests
    meson test -C .build-directory-asan
    ```
+
+## Running test suite with docker-compose
+
+1. Install `Docker Engine` on your platform as described [here](https://docs.docker.com/engine/install/)
+
+2. Install `docker-compose` on your platform as described [here](https://docs.docker.com/compose/install/)
+
+3. Run test suite
+
+   ```console
+   docker-compose up
+   ```
+
+4. Stop the running container
+
+   ```console
+   docker-compose down
+   ```
